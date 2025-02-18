@@ -56,7 +56,7 @@ exports.isPathInsideSecure = (childPath, parentPath) => {
 /**
  * Resolves the on-disk path for a given `p`, following symlinks.
  * If the path doesn't exist (ENOENT), returns the path.
- * For other errors (EACCES, etc.), it rethrows.
+ * For other errors (EACCES, etc.), it still returns the original path
  *
  * @param {string} p - The path to resolve
  */
