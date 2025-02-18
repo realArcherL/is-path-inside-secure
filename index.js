@@ -41,9 +41,6 @@ exports.isPathInsideSecure = (childPath, parentPath) => {
   const realChildPath = realPath(childPath);
   const realParentPath = realPath(parentPath);
 
-  console.log('Resolved childPath:', realChildPath);
-  console.log('Resolved parentPath:', realParentPath);
-
   // Now that we have the real on-disk paths, do the same relative check
   const relation = path.relative(realParentPath, realChildPath);
 
