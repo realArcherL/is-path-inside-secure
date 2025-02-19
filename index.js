@@ -42,7 +42,7 @@ exports.isPathInsideSecure = (childPath, parentPath) => {
 
 function safeRealPath(p) {
   try {
-    return fs.realpathSync(p);
+    return fs.realpath(p);
   } catch (error) {
     return null;
   }
