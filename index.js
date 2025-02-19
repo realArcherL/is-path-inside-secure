@@ -18,7 +18,7 @@ exports.isPathInsideSecure = (childPath, parentPath) => {
   let realChildPath = safeRealPath(childPath);
   let realParentPath = safeRealPath(parentPath);
 
-  // If either path couldn’t be resolved, fail closed.
+  // handle null
   if (!realChildPath || !realParentPath) {
     return false;
   }
