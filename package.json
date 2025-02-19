@@ -4,14 +4,11 @@
   "description": "This is a implementation of is-path-inside package by sindresorhus with the symlinks resolution and if path exists or not checks.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "keywords": [
     "path"
   ],
   "author": "Nishant Jain",
-  "license": "MIT",
-  "devDependencies": {
-    "ava": "^6.2.0"
-  }
+  "license": "MIT"
 }
