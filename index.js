@@ -13,29 +13,18 @@ exports.isPathInside = (childPath, parentPath) => {
 };
 
 exports.isPathInsideSecure = (childPath, parentPath) => {
-  // Resolve both paths on disk (following symlinks).
-  // If resolution fails (ENOENT, EACCES, etc.), we return null to fail closed.
-  let realChildPath = safeRealPath(childPath);
-  let realParentPath = safeRealPath(parentPath);
-
-  // If either path couldn’t be resolved, fail closed.
-  if (!realChildPath || !realParentPath) {
-    return false;
-  }
-
-  const relation = path.relative(realParentPath, realChildPath);
-
-  if (!relation || relation.startsWith('..') || path.isAbsolute(relation)) {
-    return false;
-  }
-
-  return true;
-};
-
-function safeRealPath(p) {
   try {
-    return fs.realpath(p);
-  } catch (error) {
-    return null;
+    // Resolve both paths on disk (following symlinks).
+    // If resolution fails (ENOENT, EACCES, etc.), we return null to fail closed.
+    let realChildPath = fs.realpathSync.native(childPath);
+    let realParentPath = fs.realpathSync.native(parentPath);
+
+    const relation = path.relative(realParentPath, realChildPath);
+
+    if (!relation || relation.startsWith('..') || path.isAbsolute(relation)) {
+      return false;
+    }
+  } catch {
+    return false;
   }
-}
+};
