@@ -23,13 +23,7 @@ exports.isPathInsideSecure = (childPath, parentPath) => {
     return false;
   }
 
-  const relation = path.relative(realParentPath, realChildPath);
-
-  if (!relation || relation.startsWith('..') || path.isAbsolute(relation)) {
-    return false;
-  }
-
-  return true;
+  return this.isPathInside(realChildPath, realParentPath);
 };
 
 function safeRealPath(p) {
