@@ -23,14 +23,6 @@ exports.isPathInsideSecure = (childPath, parentPath) => {
     return false;
   }
 
-  realChildPath = realChildPath.toLowerCase();
-  realParentPath = realParentPath.toLowerCase();
-
-  // Remove trailing slashes from both
-  // so that /foo/bar/ => /foo/bar for consistency
-  realChildPath = realChildPath.replace(/[\\/]+$/, '');
-  realParentPath = realParentPath.replace(/[\\/]+$/, '');
-
   const relation = path.relative(realParentPath, realChildPath);
 
   if (!relation || relation.startsWith('..') || path.isAbsolute(relation)) {
