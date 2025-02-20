@@ -6,7 +6,7 @@ Is in beta, and a symlink-aware implementation of popular [is-path-inside](https
 
 ## Why build this?
 
-The original `is-path-inside` isn't symlink aware.
+The original `is-path-inside` isn't symlink aware and has a following note on it:
 
 > Important: This package is meant for use with path manipulation. It does not check if the paths exist nor does it resolve symlinks. You should not use this as a security mechanism to guard against access to certain places on the file system.
 
