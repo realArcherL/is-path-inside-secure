@@ -25,7 +25,7 @@ router.route('/public/:file').get(function (req, res) {
     // Define the trusted root directory
     const rootDir = path.join(__dirname, '../../public');
 
-    // Safely join the decoded path segments
+    // Join the decoded path segments
     const absolutePath = path.join(rootDir, decodedFile);
 
     // Check if the resulting path stays inside rootDir
