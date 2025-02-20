@@ -14,7 +14,7 @@ The idea is to allow `is-path-inside-secure` to be used as a security mechanism.
 
 Example:
 
-```
+```js
 router.route('/public/:file').get(function (req, res) {
   try {
     const { file } = req.params;
@@ -38,7 +38,7 @@ router.route('/public/:file').get(function (req, res) {
       });
     }
 
-    return res.sendFile(absolutePath, (error) => {
+    return res.sendFile(absolutePath, error => {
       if (error) {
         return res.status(404).json({
           success: false,
