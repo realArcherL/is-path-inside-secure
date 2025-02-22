@@ -4,7 +4,7 @@ Is in beta, and a symlink-aware implementation of popular [is-path-inside](https
 
 > A symlink-aware helper function that checks whether `childPath` is truly inside `parentPath`. Internally calls `fs.realpathSync` to follow symlinks, Also, added a check for isAbsolute for windows. If either path doesn't exist, returns false.
 
-## Why build this?
+## Why build this and Usage
 
 The original `is-path-inside` isn't symlink aware and has a following note on it:
 
@@ -32,9 +32,9 @@ router.route('/public/:file').get(function (req, res) {
     // if not return 404
     if (!isPathInsideSecure(absolutePath, rootDir)) {
       console.log('Rejecting path. Absolute path resolved to:', absolutePath);
-      return res.status(404).json({
+      return res.status(400).json({
         success: false,
-        error: 'File Not found',
+        error: 'Invalid File Path',
       });
     }
 
@@ -60,4 +60,22 @@ router.route('/public/:file').get(function (req, res) {
 
 # Install
 
-Coming soon.
+```bash
+npm install is-path-inside-secure
+```
+
+# API
+
+### isPathInsideSecure(childPath, parentPath)
+
+**Note**: Also, has the original `is-path-inside` API as well.
+
+Checks for Symlinks and existence of path.
+
+Type: string
+
+The path that should be inside `parentPath`
+
+Type: string
+
+The path that should contain `childPath`.
