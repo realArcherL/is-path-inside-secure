@@ -1,6 +1,6 @@
 {
   "name": "is-path-inside-secure",
-  "version": "1.0.3-beta",
+  "version": "1.0.4-beta",
   "description": "This is a implementation of is-path-inside package by sindresorhus with the symlinks resolution and if path exists or not checks.",
   "main": "index.js",
   "repository": "realArcherL/is-path-inside-secure",
