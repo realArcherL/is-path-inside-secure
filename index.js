@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
-// original is-path-inside
-exports.isPathInside = (childPath, parentPath) => {
+// Original is-path-inside
+function isPathInside(childPath, parentPath) {
   const relation = path.relative(parentPath, childPath);
   return Boolean(
     relation &&
@@ -10,21 +10,21 @@ exports.isPathInside = (childPath, parentPath) => {
       !relation.startsWith(`..${path.sep}`) &&
       relation !== path.resolve(childPath)
   );
-};
+}
 
-exports.isPathInsideSecure = (childPath, parentPath) => {
+function isPathInsideSecure(childPath, parentPath) {
   // Resolve both paths on disk (following symlinks).
   // If resolution fails (ENOENT, EACCES, etc.), we return null to fail closed.
   let realChildPath = safeRealPath(childPath);
   let realParentPath = safeRealPath(parentPath);
 
-  // handle null
+  // Handle null
   if (!realChildPath || !realParentPath) {
     return false;
   }
 
-  return this.isPathInside(realChildPath, realParentPath);
-};
+  return isPathInside(realChildPath, realParentPath);
+}
 
 function safeRealPath(p) {
   try {
@@ -33,3 +33,9 @@ function safeRealPath(p) {
     return null;
   }
 }
+
+// Properly export functions
+module.exports = {
+  isPathInside,
+  isPathInsideSecure,
+};

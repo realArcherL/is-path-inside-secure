@@ -15,6 +15,8 @@ The idea is to allow `is-path-inside-secure` to be used as a security mechanism.
 Example:
 
 ```js
+const { isPathInsideSecure } = require('is-path-inside-secure');
+
 router.route('/public/:file').get(function (req, res) {
   try {
     const { file } = req.params;
