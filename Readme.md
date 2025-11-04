@@ -53,6 +53,12 @@ router.route('/public/:file').get(function (req, res) {
 });
 ```
 
+Can also use it with typescript
+
+```js
+import { isPathInsideSecure } from 'is-path-inside-secure';
+```
+
 ## Install
 
 ```bash
